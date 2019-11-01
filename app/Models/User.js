@@ -34,6 +34,11 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
+
+  //a user can have many properties registered
+  properties () {
+    return this.hasMany('App/Models/Property')
+  }
 }
 
 module.exports = User
