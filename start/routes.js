@@ -20,9 +20,19 @@ const Route = use('Route')
   return { greeting: 'Hello world in JSON' }
 }) */
 
-/*We create a route that accepts the POST method at the /users address 
-and calls the create method on the UserController controller.*/
+/*
+ *We create a route that accepts the POST method at the /users address 
+ *and calls the create method on the UserController controller.
+ */
 Route.post('/users', 'UserController.create')
 
 //authentication route
 Route.post('/sessions', 'SessionController.create')
+
+/*
+ *create all listing, display, creation, update, and distroy routes in one command
+ *auth middleware will ensure that unauthenticated users cannot use these routes.
+ */
+Route.resource('properties', 'PropertyController')
+  .apiOnly()
+  .middleware('auth')
